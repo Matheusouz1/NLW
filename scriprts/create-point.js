@@ -66,7 +66,7 @@ let selectedItems = [];
 
 
 
-
+const collectedItems = document.querySelector("input[name=items]")
 
 function handSelectedItem(event){
     const itemLi = event.target
@@ -89,13 +89,19 @@ function handSelectedItem(event){
     //se ja estiver selecionado tirar da selção
     if(alreadySelected>= 0){
         const filteredItems = selectedItems.filter( item => {
-
+            const itemIsdiferent = item != itemId
+            return itemIsdiferent
         })
-
+        selectedItems = filteredItems
     }
 
-    //se não adicionar a seleção
-
+    //e se não adicionar a seleção
+    else {
+        selectedItems.push(itemId)
+    }
+    
     // atualizar o campo com os itens selecionados
-
+    
+    
+    collectedItems.value = selectedItems
 }
